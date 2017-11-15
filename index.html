@@ -282,9 +282,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -394,8 +432,7 @@
 
       
         
-          
-            <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br><span class="line"># sudo apt install git </span><br><span class="line">sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot; # 安装oh-my-zsh</span><br></pre></td></tr></table></figure>
+          <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br><span class="line"># sudo apt install git </span><br><span class="line">sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot; # 安装oh-my-zsh</span><br></pre></td></tr></table></figure>
 <p>Github</p>
 <ul>
 <li>oh-my-zsh<ul>
@@ -405,44 +442,13 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"># 修改</span><br><span class="line">plugins = ([zsh-autosuggestions zsh-syntax-highlighting ...])</span><br><span class="line"># 保存退出</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="文件传输-scp-Linux-lt-gt-Linux"><a href="#文件传输-scp-Linux-lt-gt-Linux" class="headerlink" title="文件传输(scp Linux&lt;-&gt;Linux)"></a>文件传输(scp Linux&lt;-&gt;Linux)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发送文件</span></span><br><span class="line">scp 用户名@IP:/remotePath /localPath</span><br><span class="line"><span class="comment"># 拉取文件</span></span><br><span class="line">scp -r 用户名@IP:/remotePath /localPath</span><br></pre></td></tr></table></figure>
-<h2 id="固定IP"><a href="#固定IP" class="headerlink" title="固定IP"></a>固定IP</h2><blockquote>
-<p>配置完成后IP地址确实静态分配了，外界也可以ping通Linux，但是Linux可能不能访问外界IP，DNS可能会有问题，这个地方没搞懂</p>
-</blockquote>
-<h3 id="1-编辑网卡配置文件"><a href="#1-编辑网卡配置文件" class="headerlink" title="1. 编辑网卡配置文件"></a>1. 编辑网卡配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure>
-<h3 id="2-修改"><a href="#2-修改" class="headerlink" title="2. 修改"></a>2. 修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">auto eth0 #物理设备名</span><br><span class="line">iface eth0 inet static #静态分配</span><br><span class="line">address 192.168.1.10 #IP地址</span><br><span class="line">netmask 255.255.255.0 #掩码值</span><br><span class="line">gataway 192.168.1.1 #网关地址</span><br><span class="line"></span><br><span class="line">dns-nameservers 192.168.1.1 114.114.114.114 #DNS</span><br></pre></td></tr></table></figure>
-<h3 id="3-重启网络服务："><a href="#3-重启网络服务：" class="headerlink" title="3. 重启网络服务："></a>3. 重启网络服务：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure>
-<h2 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p>在<code>exit 0</code>前添加需要开机执行的命令， 如开机启动FTP服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ...</span><br><span class="line">service vsftpd start</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p><code>rc.local</code>中的命令不需要加sudo也能生效 </p>
-</blockquote>
-<h2 id="FTP服务"><a href="#FTP服务" class="headerlink" title="FTP服务"></a>FTP服务</h2><h3 id="1-检查是否安装了vsftpd"><a href="#1-检查是否安装了vsftpd" class="headerlink" title="1. 检查是否安装了vsftpd"></a>1. 检查是否安装了vsftpd</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vsftpd -version</span><br></pre></td></tr></table></figure>
-<p>如果显示<code>vsftpd: version x.x.x</code>字样表示系统安装了vsftpd， 否则执行如下命令安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-新建一个文件夹用于FTP的工作目录（可选）"><a href="#2-新建一个文件夹用于FTP的工作目录（可选）" class="headerlink" title="2. 新建一个文件夹用于FTP的工作目录（可选）"></a>2. 新建一个文件夹用于FTP的工作目录（可选）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sodu mkdir /home/ftp</span><br></pre></td></tr></table></figure>
-<h3 id="3-新建FTP用户并设置密码以及工作目录-（可选）"><a href="#3-新建FTP用户并设置密码以及工作目录-（可选）" class="headerlink" title="3. 新建FTP用户并设置密码以及工作目录 （可选）"></a>3. 新建FTP用户并设置密码以及工作目录 （可选）</h3><p>ftpname为你为该ftp创建的用户名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -d /home/ftp -s /bin/bash ftpname</span><br><span class="line">sudo chown ftpname /home/ftp</span><br></pre></td></tr></table></figure></p>
-<p>为新建的用户设置密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd ftpname</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-修改vsftpd配置文件"><a href="#4-修改vsftpd配置文件" class="headerlink" title="4. 修改vsftpd配置文件"></a>4. 修改vsftpd配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<p>设置属性值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">listen=YES</span><br><span class="line"># listen_ipv6=YES</span><br><span class="line">anonymous_enable=NO #禁止匿名访问 </span><br><span class="line">local_enable=YES </span><br><span class="line">write_enable =YES</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-启动vsftpd服务"><a href="#5-启动vsftpd服务" class="headerlink" title="5. 启动vsftpd服务"></a>5. 启动vsftpd服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service vsftpd start</span><br></pre></td></tr></table></figure>
-<h3 id="6-设置开机启动"><a href="#6-设置开机启动" class="headerlink" title="6. 设置开机启动"></a>6. 设置开机启动</h3><h2 id="VNC-x11vnc"><a href="#VNC-x11vnc" class="headerlink" title="VNC x11vnc"></a>VNC x11vnc</h2><h3 id="步骤-1-安装-X11VNC"><a href="#步骤-1-安装-X11VNC" class="headerlink" title="步骤 1 - 安装 X11VNC"></a>步骤 1 - 安装 X11VNC</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install x11vnc -y</span><br></pre></td></tr></table></figure>
-<h3 id="步骤-2-配置访问密码"><a href="#步骤-2-配置访问密码" class="headerlink" title="步骤 2 - 配置访问密码"></a>步骤 2 - 配置访问密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo x11vnc -storepasswd /etc/x11vnc.pass</span><br></pre></td></tr></table></figure>
-<h3 id="步骤-3-创建服务"><a href="#步骤-3-创建服务" class="headerlink" title="步骤 3 - 创建服务"></a>步骤 3 - 创建服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  /lib/systemd/system/x11vnc.service</span><br></pre></td></tr></table></figure>
-<p>粘贴如下代码，最后 :wq 保存，请使用root用户，否则没有权限。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Start x11vnc at startup.</span><br><span class="line">After=multi-user.target</span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/bin/x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth /etc/x11vnc.pass -rfbport 5900 -shared</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></p>
-<h3 id="步骤-4-配置防火墙，配置和启动服务"><a href="#步骤-4-配置防火墙，配置和启动服务" class="headerlink" title="步骤 4 - 配置防火墙，配置和启动服务"></a>步骤 4 - 配置防火墙，配置和启动服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 5900</span><br><span class="line">sudo systemctl enable x11vnc.service</span><br><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-<p>最后重启。</p>
-<h3 id="懒人脚本"><a href="#懒人脚本" class="headerlink" title="懒人脚本"></a>懒人脚本</h3><blockquote>
-<p>运行完脚本会自动重启 </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">wget https://github.com/longhr/ubuntu1604hub/raw/master/ubuntu1604VNC.sh</span><br><span class="line">chmod u+x ubuntu1604VNC.sh</span><br><span class="line">./ubuntu1604VNC.sh</span><br></pre></td></tr></table></figure>
-<p>即可完成。</p>
-<p>注意：<code>/lib/systemd/system/x11vnc.service</code> 必须有root权限才能写入</p>
-<p>如果root密码不知道，可以重置root密码<code>sudo passwd root</code></p>
-<h3 id="步骤-4-连接"><a href="#步骤-4-连接" class="headerlink" title="步骤 4 - 连接"></a>步骤 4 - 连接</h3><p>VNC viewer<br>　　IP：192.168.1.100:1
-　　</p>
-<h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><h2 id="在脚本里执行sudo命令"><a href="#在脚本里执行sudo命令" class="headerlink" title="在脚本里执行sudo命令"></a>在脚本里执行sudo命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'password'</span> | sudo -S [commond] <span class="comment"># password为自己的password</span></span><br></pre></td></tr></table></figure>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="磁盘相关"><a href="#磁盘相关" class="headerlink" title="磁盘相关"></a>磁盘相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh /home/nvidia/SSD</span><br></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/15/test/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -845,6 +851,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
 
 
 
