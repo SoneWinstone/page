@@ -94,16 +94,22 @@
 
 
 
-<meta name="description" content="戒骄戒躁">
-<meta property="og:type" content="website">
+<meta name="description" content="title: Spring Data MongoDB入门(官方文档翻译)year: 2016month: 12 day: 15你将要做什么你将要使用Spring Data Mongodb 存储一个Person的POJO。 你需要什么 大约15分钟(我花了一个多小时…)  一个你喜欢的编辑器或IDE(推荐Idea，后面的过程我是用Idea做的)  JDK1.8以上的版本  Gradle2.3以上版">
+<meta property="og:type" content="article">
 <meta property="og:title" content="SoneWinstone">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/11/16/spring_data/index.html">
 <meta property="og:site_name" content="SoneWinstone">
-<meta property="og:description" content="戒骄戒躁">
+<meta property="og:description" content="title: Spring Data MongoDB入门(官方文档翻译)year: 2016month: 12 day: 15你将要做什么你将要使用Spring Data Mongodb 存储一个Person的POJO。 你需要什么 大约15分钟(我花了一个多小时…)  一个你喜欢的编辑器或IDE(推荐Idea，后面的过程我是用Idea做的)  JDK1.8以上的版本  Gradle2.3以上版">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://scoder.xyz/zb_users/upload/2017/03/20170305204342_70784.jpeg">
+<meta property="og:image" content="http://scoder.xyz/zb_users/upload/2017/03/20170305204344_48995.png">
+<meta property="og:image" content="http://scoder.xyz/zb_users/upload/2017/03/20170305204344_73065.jpeg">
+<meta property="og:image" content="http://scoder.xyz/zb_users/upload/2017/03/20170305204345_95800.jpeg">
+<meta property="og:updated_time" content="2017-11-16T14:01:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SoneWinstone">
-<meta name="twitter:description" content="戒骄戒躁">
+<meta name="twitter:description" content="title: Spring Data MongoDB入门(官方文档翻译)year: 2016month: 12 day: 15你将要做什么你将要使用Spring Data Mongodb 存储一个Person的POJO。 你需要什么 大约15分钟(我花了一个多小时…)  一个你喜欢的编辑器或IDE(推荐Idea，后面的过程我是用Idea做的)  JDK1.8以上的版本  Gradle2.3以上版">
+<meta name="twitter:image" content="http://scoder.xyz/zb_users/upload/2017/03/20170305204342_70784.jpeg">
 
 
 
@@ -132,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/16/spring_data/"/>
 
 
 
 
 
-  <title>SoneWinstone</title>
+  <title> | SoneWinstone</title>
   
 
 
@@ -173,9 +179,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -316,9 +320,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -348,9 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/spring_data/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -411,9 +413,7 @@
       
 
       
-        
-          
-            <hr>
+        <hr>
 <p>title: Spring Data MongoDB入门(官方文档翻译)<br>year: 2016<br>month: 12</p>
 <h2 id="day-15"><a href="#day-15" class="headerlink" title="day: 15"></a>day: 15</h2><h2 id="你将要做什么"><a href="#你将要做什么" class="headerlink" title="你将要做什么"></a>你将要做什么</h2><p>你将要使用<a href="http://scoder.xyz/?tags=1" target="_blank" rel="external"></a><a href="http://scoder.xyz/?tags=4" target="_blank" rel="external">Spring</a> Data Mongodb 存储一个<strong>Person</strong>的POJO。</p>
 <h2 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h2><ul>
@@ -494,8 +494,6 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>恭喜你！你创建了个MongoDB server 并且写了一个简单的应用程序，使用Spring Data MongoDB 保存对象和从数据库读取数据—-在没有写任何repository固定实现的情况下。</p>
 <p><strong>第一次翻译英文文档，不对的地方请谅解 欢迎批评指正！</strong></p>
 
-          
-        
       
     </div>
     
@@ -512,160 +510,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/darknet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SoneWinstone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SoneWinstone">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/darknet/" itemprop="url">机器学习框架Darknet的Windows版</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T21:06:21+08:00">
-                2017-11-16
-              </time>
+              <a href="/2017/11/16/darknet/" rel="next" title="机器学习框架Darknet的Windows版">
+                <i class="fa fa-chevron-left"></i> 机器学习框架Darknet的Windows版
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/16/darknet/" class="leancloud_visitors" data-flag-title="机器学习框架Darknet的Windows版">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p><description>这段时间将运行在Linux平台的机器学习项目<code>Darknet</code>迁移到了Windows平台。期间大问题没有小问题不断，经过几天的努力差不多已经完成整个项目的迁移。在此记录一下遇到的比较头疼的问题。</description></p>
-<blockquote>
-<p>想要在Windows平台学习Darknet可以参考<a href="https://github.com/AlexeyAB/darknet" title="Darknet" target="_blank" rel="external">Darknet</a></p>
-</blockquote>
-<p>提示：<strong>显卡选择很重要，支持CUDNN的Nvidia显卡才能达到最好效果！！！</strong></p>
-<h2 id="一、-准备"><a href="#一、-准备" class="headerlink" title="一、 准备"></a>一、 准备</h2><ol>
-<li>Windows项目提供者给出的编译工具是<code>MSVS 2015, CUDA 8.0 and OpenCV 3.0</code>，其实OpenCV只要是3.0以上的都可以，我这里使用的是<code>OpenCV3.2</code>。需要注意的是OpenCV的路径<code>C:\opencv_3.0\opencv\build\include &amp; C:\opencv_3.0\opencv\build\x64\vc14\lib</code>。</li>
-<li>将OpenCV的两个dll：<code>opencv_world320.dll</code>和<code>opencv_ffmpeg320_64.dll</code>放到<code>C:\opencv_3.0\opencv\build\x64\vc14\bin</code>目录下，之后生成的<code>darknet.exe</code>也需要这两个dll，没有这两个文件darknet.exe就不能正常运行。</li>
-<li>下载<a href="https://developer.nvidia.com/cudnn" title="CUDNN" target="_blank" rel="external">CUDNN</a>, 6.0以上版本即可。<ul>
-<li>添加<code>CUDNN</code>到环境变量</li>
-<li>使用VS2015打开项目，右键选择属性 -&gt; C/C++ -&gt; 预处理器 -&gt; 预处理器定义，并且在最开始添加<code>CUDNN;</code></li>
-</ul>
-</li>
-<li>然后启动VS2015，打开darknet项目，设置为解决方案为<code>Release</code>，平台为<code>x64</code>。右键生成项目即可。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/darknet/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -675,154 +541,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/15/Linux杂记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SoneWinstone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SoneWinstone">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/15/Linux杂记/" itemprop="url">Linux杂记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T13:16:01+08:00">
-                2017-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/15/Linux杂记/" class="leancloud_visitors" data-flag-title="Linux杂记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h2 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br><span class="line"># sudo apt install git </span><br><span class="line">sh -c &quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot; # 安装oh-my-zsh</span><br></pre></td></tr></table></figure>
-<p>Github</p>
-<ul>
-<li>oh-my-zsh<ul>
-<li>zsh-autosuggestions</li>
-<li>zsh-syntax-highlighting</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"># 修改</span><br><span class="line">plugins = ([zsh-autosuggestions zsh-syntax-highlighting ...])</span><br><span class="line"># 保存退出</span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/15/Linux杂记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -830,6 +553,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -850,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -941,6 +677,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#day-15"><span class="nav-number">1.</span> <span class="nav-text">day: 15</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你将要做什么"><span class="nav-number">2.</span> <span class="nav-text">你将要做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你需要什么"><span class="nav-number">3.</span> <span class="nav-text">你需要什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何完成本指导"><span class="nav-number">4.</span> <span class="nav-text">如何完成本指导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳过最基本的，按如下步骤做："><span class="nav-number">5.</span> <span class="nav-text">跳过最基本的，按如下步骤做：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Maven创建项目"><span class="nav-number">6.</span> <span class="nav-text">使用Maven创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建目录结构如下-使用Git-Clone不需要做这一步"><span class="nav-number">7.</span> <span class="nav-text">创建目录结构如下(使用Git Clone不需要做这一步)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装并运行Mongodb"><span class="nav-number">8.</span> <span class="nav-text">安装并运行Mongodb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义一个简单实体"><span class="nav-number">9.</span> <span class="nav-text">定义一个简单实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建简单查询"><span class="nav-number">10.</span> <span class="nav-text">创建简单查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个Application类"><span class="nav-number">11.</span> <span class="nav-text">创建一个Application类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建一个可执行的JAR文件"><span class="nav-number">12.</span> <span class="nav-text">构建一个可执行的JAR文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1054,10 +806,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
