@@ -331,184 +331,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/spring_data/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SoneWinstone">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SoneWinstone">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/spring_data/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T21:58:17+08:00">
-                2017-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/16/spring_data/" class="leancloud_visitors" data-flag-title="">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="title-Spring-Data-MongoDB入门-官方文档翻译"><a href="#title-Spring-Data-MongoDB入门-官方文档翻译" class="headerlink" title="title: Spring Data MongoDB入门(官方文档翻译)"></a>title: Spring Data MongoDB入门(官方文档翻译)</h2><h2 id="你将要做什么"><a href="#你将要做什么" class="headerlink" title="你将要做什么"></a>你将要做什么</h2><p>你将要使用Spring Data Mongodb 存储一个<strong>Person</strong>的POJO。</p>
-<h2 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h2><ul>
-<li>大约15分钟(我花了一个多小时…)</li>
-<li>一个你喜欢的编辑器或IDE(推荐Idea，后面的过程我是用Idea做的)</li>
-<li>JDK1.8以上的版本</li>
-<li>Gradle2.3以上版本或Maven3.0以上版本</li>
-</ul>
-<h2 id="如何完成本指导"><a href="#如何完成本指导" class="headerlink" title="如何完成本指导"></a>如何完成本指导</h2><p>像大多数Spring入门指导一样，你可以从草稿开始并且一步一步完成每一个步骤，或者你可以跳过对你来说特别熟练的步骤。不管是哪种方式，你最终要完成一份可以运行的代码。</p>
-<h2 id="跳过最基本的，按如下步骤做："><a href="#跳过最基本的，按如下步骤做：" class="headerlink" title="跳过最基本的，按如下步骤做："></a>跳过最基本的，按如下步骤做：</h2><ol>
-<li>从本向导下载并解压 源码，或者用Git克隆：<strong>git clone <a href="https://github.com/spring-guides/gs-accessing-data-mongodb.git" target="_blank" rel="external">https://github.com/spring-guides/gs-accessing-data-mongodb.git</a></strong></li>
-<li>切换到<strong>gs-accessing-data-mongodb/initial</strong>目录</li>
-<li>开始之前你应该下载并安装<strong>Mongodb</strong></li>
-<li>如果你都完成了，可以到<strong>gs-accessing-data-mongodb/complete</strong>目录检查一下是否目录结构一样。</li>
-</ol>
-<h2 id="使用Maven创建项目"><a href="#使用Maven创建项目" class="headerlink" title="使用Maven创建项目"></a>使用Maven创建项目</h2><h3 id="创建目录结构如下-使用Git-Clone不需要做这一步"><a href="#创建目录结构如下-使用Git-Clone不需要做这一步" class="headerlink" title="创建目录结构如下(使用Git Clone不需要做这一步)"></a>创建目录结构如下(使用Git Clone不需要做这一步)</h3><p>Markup<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">└── src    </span><br><span class="line">    └── main        </span><br><span class="line">        └── java            </span><br><span class="line">            └── hello</span><br></pre></td></tr></table></figure></p>
-<p><strong>pom.xml</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gs-accessing-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-mongodb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>spring-releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>Spring Releases<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/libs-release<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>spring-releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>Spring Releases<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/libs-release<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="安装并运行Mongodb"><a href="#安装并运行Mongodb" class="headerlink" title="安装并运行Mongodb"></a>安装并运行Mongodb</h2><p>这个就不介绍了，自己到网上下载。安装好了记得开启Mongodb服务<strong>mongod</strong>。</p>
-<h2 id="定义一个简单实体"><a href="#定义一个简单实体" class="headerlink" title="定义一个简单实体"></a>定义一个简单实体</h2><p>MongoDB 是 NoSQL文档数据库。在这个例子里，你要存储<strong>Customer</strong>这个对象。<br><strong>src/main/java/hello/Customer.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.data.annotation.Id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">public</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String firstName;</span><br><span class="line">    <span class="keyword">public</span> String lastName;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">        <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.format(</span><br><span class="line">                <span class="string">"Customer[id=%s, firstName='%s', lastName='%s']"</span>,</span><br><span class="line">                id, firstName, lastName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里你创建了一个<strong>Customer</strong>类，这个类有三个属性，<strong>id</strong>，<strong>firstName</strong>，和<strong>lastName</strong>。<strong>id</strong>这个属性通常是MongoDB内部使用的。你同样要有一个构造函数用来创建新的实例。</p>
-<blockquote>
-<p>在本向导中，为了更简洁去除了典型的Get/Set方法。</p>
-</blockquote>
-<p><strong>id</strong>与MongoDB的标准字段id相匹配，所以在Spring Data MongoDB中不需要特殊的标签去注解它。<br>另外两个属性，<strong>firstName</strong>和<strong>lastName</strong>，都不需要注解。他们最终会被映射成和他们变量名一样的字段。<br><strong>toString()</strong>方法会用一种舒服的方式把一个Customer的信息打印出来。</p>
-<blockquote>
-<p>MongoDB存储数据在集合里。Spring Data MongoDB会映射<strong>Customer</strong>类到一个名为<strong>customer</strong>的集合。如果你想改变集合的名字，可以使用Spring Data MongoDB的注解<strong>@Document</strong>来给一个类定义一个别的集合名。</p>
-</blockquote>
-<h2 id="创建简单查询"><a href="#创建简单查询" class="headerlink" title="创建简单查询"></a>创建简单查询</h2><p>Spring Data MongoDB 关注于向MongoDB存储数据。它同样继承了Spring Data Commons项目中函数，比如查询的能力。本质上，你不需要学习MongoDB的查询语言；你只需要少量的方法，其他的查询会帮你做。<br>观察它是如何工作的，创建一个用来查询Customer文档的Repository接口。<br><strong>src/main/java/hello/CustomerRepository.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.data.mongodb.repository.MongoRepository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CustomerRepository</span> <span class="keyword">extends</span> <span class="title">MongoRepository</span>&lt;<span class="title">Customer</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Customer <span class="title">findByFirstName</span><span class="params">(String firstName)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Customer&gt; <span class="title">findByLastName</span><span class="params">(String lastName)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>CustomerRepository</strong> 继承<strong>MongoRepository</strong>接口并且指定了运行时的类型：<strong>Customer</strong>和<strong>String</strong>。简单易用，这个接口自带了很多操作，包括基本的CRUD操作(create-read-update-delete)。<br>你可以声明一些其他的你需要的方法，只需要声明它们的方法。在这里，添加了<strong>findByFirstName</strong>，本质上这段代码等同于从文档中查找一个匹配<strong>firstName</strong> 的 <strong>Customer</strong>。<br>同样有一个<strong>findByLastName</strong>的方法查询一个符合条件的查询。<br>在一个典型的Java应用程序中，你需要写一个类实现<strong>CustomerRepository</strong>并且自己实现这些方法。什么让Spring Data MongoDB变得如此有用？事实上，你不需要写任何的方法实现。Spring Data MongoDB会在你运行程序时自动创建这些方法。<br>让我们把它跑起来看看它怎么运行的！</p>
-<h2 id="创建一个Application类"><a href="#创建一个Application类" class="headerlink" title="创建一个Application类"></a>创建一个Application类</h2><p>这里你创建了一个Application类和所有组件。<br><strong>src/main/java/hello/Application.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.CommandLineRunner;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">implements</span> <span class="title">CommandLineRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CustomerRepository repository;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(String... args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        repository.deleteAll();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 存一对Customers</span></span><br><span class="line">        repository.save(<span class="keyword">new</span> Customer(<span class="string">"Sone"</span>, <span class="string">"Winstone"</span>));</span><br><span class="line">        repository.save(<span class="keyword">new</span> Customer(<span class="string">"Smart"</span>, <span class="string">"Winstone"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取所有Customer</span></span><br><span class="line">        System.out.println(<span class="string">"Customers found with findAll():"</span>);</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------------------"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Customer customer : repository.findAll()) &#123;</span><br><span class="line">            System.out.println(customer);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取Customer个体</span></span><br><span class="line">        System.out.println(<span class="string">"Customer found with findByFirstName('Sone'):"</span>);</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------------------"</span>);</span><br><span class="line">        System.out.println(repository.findByFirstName(<span class="string">"Sone"</span>));</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Customers found with findByLastName('Winstone'):"</span>);</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------------------"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Customer customer : repository.findByLastName(<span class="string">"Winstone"</span>)) &#123;</span><br><span class="line">            System.out.println(customer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>@SpringBootApplication</strong>是一个易用的注解，它包括以下内容：<br><strong>@Configuration</strong>标签标注这个类作为应用上下文的资源。<br><strong>@EnableAutoConfiguration</strong>告诉Spring Boot在启动时加载在classpath设置资源，其他bean，和可用的属性设置。<br>一般情况下你会给Spring MVC应用添加一个<strong>@EnableWebMvc</strong>的注解，但是Spring Boot会自动添加这个注解如果它在classpath下看到<strong>spring-webmvc</strong>。这个注解标志着应用是一个web应用，并且会像配置了<strong>DispatcherServlet</strong>一样启动关键行为。<br><strong>@ComponentScan</strong>告诉Spring去在<strong>hello</strong>包下查找其他组件，配置，和Service，允许它查找Controller。<br><strong>main()</strong>方法用了Spring Boot的<strong>SpringApplication.run()</strong>方法去加载一个应用程序。不知道你有没有注意到我们并没有写一行的XML？也没有其他的<strong>web.xml</strong>文件。这个应用是用纯Java代码编写的，并且你不需要配置其他的东西。</p>
-<blockquote>
-<p>默认情况下，标注了<strong>@EnableMongoRepositories</strong>的类会扫描当前包下的任何继承了Spring Data的repository接口的接口。如果你的项目中包含多个子项目，并且程序不能正确找到你想要使用的repository，那么使用<strong>basePackageClasses=MyRepository.class</strong>会<a href="http://scoder.xyz/?tags=21" target="_blank" rel="external">安全</a>的告诉Spring Data MongoDB去扫描不同根路径下的包来找到相应的repository。</p>
-</blockquote>
-<p>Spring Data MongoDB 使用<strong>MongoTemplate</strong>执行你的所有<strong>find*`方法。你可以使用这个模板来定义一些符合的查询，不过本向导里不包含这些。
-</strong>Application<strong>包含一个</strong>main()<strong>方法并且自动装载了一个</strong>CustomerRepository<strong>的实例：Spring Data MongoDB动态的创建一个代理并注入。我们通过一些简单的Test来使用</strong>CustomerRepository<strong>。首先，它存储了一些</strong>Customer<strong>对象，通过</strong>sava()<strong>方法和设置一些必要的参数。接下来，调用</strong>findAll()<strong>方法从数据库中查找符合条件的</strong>Customer<strong>对象。然后调用</strong>findByFirstName()<strong>方法查找符合条件的单个</strong>Customer<strong>对象。最后，调用</strong>findByLastName()**方法查找姓氏为’Winstone’的Customer。</p>
-<blockquote>
-<p>Spring Boot 默认会连接本地的MongoDB。如果要连接远程的MongoDB，请自己查找相关资料。</p>
-</blockquote>
-<h2 id="构建一个可执行的JAR文件"><a href="#构建一个可执行的JAR文件" class="headerlink" title="构建一个可执行的JAR文件"></a>构建一个可执行的JAR文件</h2><p>(这个我折腾了好久，为了避免大家不必要的折腾，我直接给出可行的方案)</p>
-<ol>
-<li>在Idea的右下角打开Maven标签<br><img src="http://scoder.xyz/zb_users/upload/2017/03/20170305204342_70784.jpeg" alt=""></li>
-<li>点击Maven标签上方的那个带M字母的小图标<br><img src="http://scoder.xyz/zb_users/upload/2017/03/20170305204344_48995.png" alt=""></li>
-<li>选择好路径并输入和我一样的命令<br><img src="http://scoder.xyz/zb_users/upload/2017/03/20170305204344_73065.jpeg" alt=""></li>
-<li>点击Execute 出现如下运行结果<br><img src="http://scoder.xyz/zb_users/upload/2017/03/20170305204345_95800.jpeg" alt=""><br>如果我们的应用程序实现了<strong>CommandLineRunner</strong>接口，<strong>run()</strong>方法会在boot启动时自动调用。你会看到一些如下的输出(可以使用别的输出格式让它变得更美观)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Customers found with findAll():  </span><br><span class="line">* * *</span><br><span class="line">Customer[id=584bb9a031e5b20a2895932f, firstName=&apos;Sone&apos;, lastName=&apos;Winstone&apos;]</span><br><span class="line">Customer[id=584bb9a031e5b20a28959330, firstName=&apos;Smart&apos;, lastName=&apos;Winstone&apos;]  </span><br><span class="line">Customer found with findByFirstName(&apos;Sone&apos;): </span><br><span class="line">* * *</span><br><span class="line">Customer[id=584bb9a031e5b20a2895932f, firstName=&apos;Sone&apos;, lastName=&apos;Winstone&apos;]</span><br><span class="line">Customers found with findByLastName(&apos;Winstone&apos;):  </span><br><span class="line">* * *</span><br><span class="line">Customer[id=584bb9a031e5b20a2895932f, firstName=&apos;Sone&apos;, lastName=&apos;Winstone&apos;]</span><br><span class="line">Customer[id=584bb9a031e5b20a28959330, firstName=&apos;Smart&apos;, lastName=&apos;Winstone&apos;]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>恭喜你！你创建了个MongoDB server 并且写了一个简单的应用程序，使用Spring Data MongoDB 保存对象和从数据库读取数据—-在没有写任何repository固定实现的情况下。<br><strong>第一次翻译英文文档，不对的地方请谅解 欢迎批评指正！</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/darknet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -751,6 +573,146 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/15/Linux杂记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/spring_data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/15/spring_data/" itemprop="url">Spring Data MongoDB入门(官方文档翻译)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-15T08:00:00+08:00">
+                2016-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/12/15/spring_data/" class="leancloud_visitors" data-flag-title="Spring Data MongoDB入门(官方文档翻译)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="你将要做什么"><a href="#你将要做什么" class="headerlink" title="你将要做什么"></a>你将要做什么</h2><p>你将要使用Spring Data Mongodb 存储一个<strong>Person</strong>的POJO。</p>
+<h2 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h2><ul>
+<li>大约15分钟(我花了一个多小时…)</li>
+<li>一个你喜欢的编辑器或IDE(推荐Idea，后面的过程我是用Idea做的)</li>
+<li>JDK1.8以上的版本</li>
+<li>Gradle2.3以上版本或Maven3.0以上版本
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/15/spring_data/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
