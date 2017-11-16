@@ -331,6 +331,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/jQuery遍历js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/16/jQuery遍历js/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T23:04:30+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/11/16/jQuery遍历js/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: jQuery遍历Map<br>date: ‘2017-03-07’<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type:<span class="string">'GET'</span>,</span><br><span class="line">    url:<span class="string">"/getTopCourse"</span>,</span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    contentType : <span class="string">'application/json; charset=UTF-8'</span>,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="literal">null</span> == result || <span class="built_in">Object</span>.getOwnPropertyNames(result).length == <span class="number">0</span>)</span><br><span class="line">            str = <span class="string">"没有推荐课程？请联系管理员！"</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            $.each(result,<span class="function"><span class="keyword">function</span>(<span class="params">key,values</span>)</span>&#123;</span><br><span class="line">                str += key + <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">                $(values).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                    str += <span class="string">"　　"</span>+values.courseName+<span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        $(<span class="string">"#topCourse"</span>).html(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>以上是我项目中的一段jQuery代码。功能就是处理从<code>/getTopCourse</code>返回的Map<string, list<course="">&gt;，并将处理后的数据显示在id为topCourse的标签里。这段代码有两处值得注意的地方。</string,></p>
+<h3 id="第一处："><a href="#第一处：" class="headerlink" title="第一处："></a>第一处：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyNames(result).length</span><br></pre></td></tr></table></figure>
+<p>这段代码是JS代码，可以获取Map的长度，用来判断返回的Map中是否存在数据。</p>
+<h3 id="第二处："><a href="#第二处：" class="headerlink" title="第二处："></a>第二处：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.each(result,<span class="function"><span class="keyword">function</span>(<span class="params">key,values</span>)</span>&#123;</span><br><span class="line">    str += key + <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">      $(values).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      str += <span class="string">"　　"</span>+values.courseName+<span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这段代码就是处理Map有数据的情况，有点类似嵌套循环的味道。</p>
+<blockquote>
+<p>注意：jquery中的$().each和$.each的区别，前者只能遍历数组，后者可以遍历数组和对象</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/darknet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -623,6 +763,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/17/maven/" itemprop="url">国内Maven服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-17T08:00:00+08:00">
+                2017-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/01/17/maven/" class="leancloud_visitors" data-flag-title="国内Maven服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用国外的Maven仓库创建项目会非常非常慢，有个比较好的解决方法就是使用国内的Maven仓库。现在向大家安利一个阿里云的Maven服务器。<br>使用方法是找到<strong>Maven</strong>的<strong>conf</strong>目录下的<strong>settings.xml</strong><br>在标签下添加如下信息：<br>Markup<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;    </span><br><span class="line">    &lt;id&gt;alimaven&lt;/id&gt;    </span><br><span class="line">    &lt;name&gt;aliyun maven&lt;/name&gt;    </span><br><span class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;    </span><br><span class="line">    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;         </span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure></p>
+<p>现在试试创建项目是不是比以前快了许多呢！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/spring_data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -796,7 +1068,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
