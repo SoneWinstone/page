@@ -623,6 +623,548 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/FastJSON的快速入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/08/FastJSON的快速入门/" itemprop="url">FastJSON的快速入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T00:00:00+08:00">
+                2017-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/08/FastJSON的快速入门/" class="leancloud_visitors" data-flag-title="FastJSON的快速入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-添加Maven依赖"><a href="#1-添加Maven依赖" class="headerlink" title="1.添加Maven依赖"></a>1.添加Maven依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.31<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-创建测试实体"><a href="#2-创建测试实体" class="headerlink" title="2.创建测试实体"></a>2.创建测试实体</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Group.class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Group</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> List&lt;User&gt; users = <span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">getUsers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> users;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsers</span><span class="params">(List&lt;User&gt; users)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.users = users;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"ObjectToJSONString:"</span>);</span><br><span class="line">    Group group = <span class="keyword">new</span> Group();</span><br><span class="line">    group.setId(<span class="number">1</span>);</span><br><span class="line">    group.setName(<span class="string">"winstone"</span>);</span><br><span class="line">    User u1 = <span class="keyword">new</span> User();</span><br><span class="line">    u1.setUsername(<span class="string">"user1"</span>);</span><br><span class="line">    u1.setPassword(<span class="string">"pwd1"</span>);</span><br><span class="line">    User u2 = <span class="keyword">new</span> User();</span><br><span class="line">    u2.setUsername(<span class="string">"user2"</span>);</span><br><span class="line">    u2.setPassword(<span class="string">"pwd2"</span>);</span><br><span class="line">    group.getUsers().add(u1);</span><br><span class="line">    group.getUsers().add(u2);</span><br><span class="line">    String s = JSON.toJSONString(group);</span><br><span class="line">    System.out.println(s);</span><br><span class="line">    System.out.println(<span class="string">"**********************************************************"</span>);</span><br><span class="line">    System.out.println(<span class="string">"ParseJSONStringToObject:"</span>);    Group g2 = JSON.parseObject(s, Group.class);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != g2) &#123;</span><br><span class="line">        System.out.println(<span class="string">"id:"</span> + g2.getId());</span><br><span class="line">        System.out.println(<span class="string">"name:"</span> + g2.getName());</span><br><span class="line">        System.out.println(<span class="string">"users:"</span>);</span><br><span class="line">        System.out.println(<span class="string">"\tusername:"</span> + g2.getUsers().get(<span class="number">0</span>).getUsername());</span><br><span class="line">        System.out.println(<span class="string">"\tpassword:"</span> + g2.getUsers().get(<span class="number">0</span>).getPassword());</span><br><span class="line">        System.out.println(<span class="string">"\tusername:"</span> + g2.getUsers().get(<span class="number">1</span>).getUsername());</span><br><span class="line">        System.out.println(<span class="string">"\tpassword:"</span> + g2.getUsers().get(<span class="number">1</span>).getPassword());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-输出"><a href="#4-输出" class="headerlink" title="4.输出"></a>4.输出</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ObjectToJSON</span><br><span class="line">String:&#123;<span class="string">"id"</span>:<span class="number">1</span>,<span class="string">"name"</span>:<span class="string">"winstone"</span>,<span class="string">"users"</span>:[&#123;<span class="string">"password"</span>:<span class="string">"pwd1"</span>,<span class="string">"username"</span>:<span class="string">"user1"</span>&#125;,&#123;<span class="string">"password"</span>:<span class="string">"pwd2"</span>,<span class="string">"username"</span>:<span class="string">"user2"</span>&#125;]&#125;</span><br><span class="line">**********************************************************</span><br><span class="line">ParseJSONStringToObject:</span><br><span class="line">id:<span class="number">1</span>name:winstoneusers:</span><br><span class="line">    username:user1</span><br><span class="line">    password:pwd1</span><br><span class="line">    username:user2</span><br><span class="line">    password:pwd2</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/SLF4J和Log4j日志的基本使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/08/SLF4J和Log4j日志的基本使用/" itemprop="url">SLF4J和Log4j日志的基本使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T00:00:00+08:00">
+                2017-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/08/SLF4J和Log4j日志的基本使用/" class="leancloud_visitors" data-flag-title="SLF4J和Log4j日志的基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><p>使用<code>SLF4J</code>需要<code>slf4j-api</code>以及相应的<code>slf4j-xxx</code>和<code>xxx</code>jar包，这里的jar包是一个具体实现了输出日志功能的jar，比如下面的<code>log4j</code>。 <strong>SLF4J本身是不具备输出日志的功能的!</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-配置文件-log4j-properties"><a href="#2-配置文件-log4j-properties" class="headerlink" title="2.配置文件 log4j.properties"></a>2.配置文件 log4j.properties</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 其他具体的属性请自行查询</span><br><span class="line"># 日志输出级别（INFO）和输出位置（stdout，R）</span><br><span class="line"># 这里的R可以替换为其他的任何不与关键字冲突的字符log4j.rootLogger=INFO, stdout , R</span><br><span class="line"># 日志输出位置为控制台</span><br><span class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.stdout.layout.ConversionPattern=[DEV] %p [%t] %C.%M(%L) =&gt; %m%n</span><br><span class="line"># 日志输出位置为文件</span><br><span class="line">log4j.appender.R=org.apache.log4j.DailyRollingFileAppender</span><br><span class="line">log4j.appender.R.File=S:/logs/dev.log</span><br><span class="line">log4j.appender.R.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.R.layout.ConversionPattern=%d-[Prefix] %p %t %c =&gt; %m%n</span><br><span class="line"># 定义相应包路径下的日志输出级别</span><br><span class="line">log4j.logger.scoder.xyz.demo=DEBUG</span><br></pre></td></tr></table></figure>
+<h2 id="3-DEMO"><a href="#3-DEMO" class="headerlink" title="3.DEMO"></a>3.DEMO</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line">public class Log4JTest &#123;</span><br><span class="line">//    private static final org.apache.log4j.Logger log = (Logger) LogManager.getLogger(Log4JTest.class);</span><br><span class="line">    final static Logger log = LoggerFactory.getLogger(Log4JTest.class);</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        log.info(&quot;Test: &#123;&#125;&quot;, &quot;Output Log&quot;);</span><br><span class="line">        log.debug(&quot;Hello this is an debug message&quot;);</span><br><span class="line">        log.info(&quot;Hello this is an info message&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由<code>DEMO</code>可以看出<code>SLF4J</code>的<code>Logger</code>使用是更方便的,而且支持<strong>占位符</strong>的使用! 会有比<code>Log4j</code>拼接字符串具有更好的性能.</p>
+</blockquote>
+<h2 id="4-输出"><a href="#4-输出" class="headerlink" title="4.输出"></a>4.输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 控制台</span><br><span class="line">[DEV] INFO [main] scoder.xyz.demo.Log4JTest.main(16) =&gt; Test: Output Log</span><br><span class="line">[DEV] DEBUG [main] scoder.xyz.demo.Log4JTest.main(17) =&gt; Hello this is an debug message</span><br><span class="line">[DEV] INFO [main] scoder.xyz.demo.Log4JTest.main(18) =&gt; Hello this is an info message</span><br><span class="line">// S:/logs/dev.log</span><br><span class="line">2017-04-08 16:06:20,532-[Prefix] INFO main scoder.xyz.demo.Log4JTest =&gt; Test: Output Log</span><br><span class="line">2017-04-08 16:06:20,534-[Prefix] DEBUG main scoder.xyz.demo.Log4JTest =&gt; Hello this is an debug message</span><br><span class="line">2017-04-08 16:06:20,534-[Prefix] INFO main scoder.xyz.demo.Log4JTest =&gt; Hello this is an info message</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/03/MongoDB 3.4 开启安全验证/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/03/MongoDB 3.4 开启安全验证/" itemprop="url">MongoDB 3.4 开启安全验证</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-03T00:00:00+08:00">
+                2017-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/03/MongoDB 3.4 开启安全验证/" class="leancloud_visitors" data-flag-title="MongoDB 3.4 开启安全验证">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-新建用户"><a href="#1-新建用户" class="headerlink" title="1. 新建用户"></a>1. 新建用户</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user:'test',pwd:'test',roles:[&#123;role:'readWrite',db:'admin'&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+<p>创建一个用户，用户名：test 密码：test 权限：对admin库的读写<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show roles #查看所有可分配权限show users #查看当前库用户(先进入库)</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-修改MongoDB配置"><a href="#2-修改MongoDB配置" class="headerlink" title="2. 修改MongoDB配置"></a>2. 修改MongoDB配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/mongod.conf</span><br></pre></td></tr></table></figure>
+<p>注释这一行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>bindIp: 127.0.0.1</span><br></pre></td></tr></table></figure></p>
+<p>取消注释security，并添加一行如下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">security:    authorization: 'enabled' #开启安全认证</span><br></pre></td></tr></table></figure></p>
+<p>重启MongoDB<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mongod restart</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/02/Ajax向服务端提交Map数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SoneWinstone">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SoneWinstone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/02/Ajax向服务端提交Map数据/" itemprop="url">Ajax向服务端提交Map数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-02T00:00:00+08:00">
+                2017-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/02/Ajax向服务端提交Map数据/" class="leancloud_visitors" data-flag-title="Ajax向服务端提交Map数据">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>SpringMVC Controller代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/index/setFriendlyLink"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ResultJSON <span class="title">setFriendlyLink</span><span class="params">(FriendlyLink links)</span> </span>&#123;</span><br><span class="line">    desktopService.setFriendlyLink(links);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResultJSON(<span class="number">0</span>,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>服务端所需数据<code>FriendlyLink</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//FriendlyLink.java</span></span><br><span class="line"><span class="keyword">private</span> Map&lt;String, String&gt; friendlyLink = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, String&gt; <span class="title">getFriendlyLink</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> friendlyLink;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFriendlyLink</span><span class="params">(Map&lt;String, String&gt; friendlyLink)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.friendlyLink = friendlyLink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Ajax写法(使用了<code>jQuery</code>库)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    method: <span class="string">"GET"</span>,</span><br><span class="line">    url: <span class="string">"/index/setFriendlyLink"</span>,</span><br><span class="line">    data: &#123;<span class="attr">friendlyLink</span>:&#123;<span class="string">"谷歌"</span>:<span class="string">"google.com"</span>,<span class="string">"百度"</span>:<span class="string">"baidu.com"</span>&#125;&#125;,</span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">rst</span>)</span>&#123;</span><br><span class="line">        $(<span class="string">"#div"</span>).html(rst.error);</span><br><span class="line">    &#125;&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析:"></a>分析:</h3><p>SpringMVC解析规则 : 根据类的属性字段名,如果有相同名称且数据类型相吻合的数据提交到Controller,就将其解析为相应的类。 如本例中的FriendlyLink类中只有一个名为<code>friendlyLink</code>的字段,就需要客户端提交过来一个相应名字的数据。<br>我们看Ajax的data : <code>{friendlyLink:{&quot;谷歌&quot;:&quot;google.com&quot;,&quot;百度&quot;:&quot;baidu.com&quot;}}</code>,这是一个标准的JSON写法， <code>Key:friendlyLink</code>对应服务端所需的<code>FriendlyLink</code>类(<strong>注意不是看类名,而是类的属性字段!!!</strong>)。 <code>Value:{“谷歌”:”google.com”,”百度”:”baidu.com”}</code>,对应的是<code>friendlyLink</code>所对应的数据类型<code>Map</code>, <code>Map</code>对应的JSON也是<code>Key:Value</code>对。对照着<code>data</code>数据的Value值, 相信大家已经知道怎么写Map相应的JSON了吧。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>SpringMVC不能解析List&lt;…&gt;、Map&lt;…&gt;的数据,必须将其封装起来才可以!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/jQuery遍历map/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1067,7 +1609,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
